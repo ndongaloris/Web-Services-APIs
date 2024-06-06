@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
+const route = require("./routes")
 const { MongoClient } = require('mongodb');
 const bodyParser = require('body-parser');
-const DATABASE_URL = process.env.DATABASE_URL;       
 const client = new MongoClient(DATABASE_URL);
 
 
@@ -10,10 +10,13 @@ app.get('/', (req, res) => {
     res.send("Hello");
 });
 
+app.use("/", route )
+
 /**
 * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
 * See https://docs.mongodb.com/ecosystem/drivers/node/ for more details
 */
+const DATABASE_URL = process.env.DATABASE_URL;       
 
 /* ***********************
  * Local Server Information

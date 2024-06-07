@@ -20,7 +20,15 @@ const initDb = (callback) =>{
 }
 
 
+const getDatabase = () =>{
+    if(!database){
+        throw Error("database is empty");
+    }
+    else{
+        return database;
+    }
+}
 module.exports = {
     initDb,
-    database,
+    getDatabase,
 }

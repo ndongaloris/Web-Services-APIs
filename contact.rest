@@ -1,0 +1,22 @@
+# Localhost
+
+# GET ALL
+GET http://localhost:8080/users
+
+###
+
+# GET BY ID
+GET http://localhost:8080/users/666385f84e95e0c336a58d40
+
+
+
+# Production
+
+###
+# GET ALL
+GET https://web-services-apis.onrender.com/users
+
+###
+# GET BY ID
+GET https://web-services-apis.onrender.com/users/666385f84e95e0c336a58d40
+

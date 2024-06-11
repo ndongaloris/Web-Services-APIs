@@ -18,11 +18,64 @@ const getSingle = async (req, res)=>{
         res.setHeader("Content-Type", "application/json");
         res.status(200).json(users[0])
     }).catch((err) => {
-        console.log("error with getSingle function in the user controller", err);
+        throw Error("error with getSingle function in the user controller", err);
     })
+}
+
+const createUser = async(req, res) =>{
+        const newDoc = {
+            fname: req.body.fname,
+            lname: req.body.lname,
+            mname: req.body.mname,
+            favoriteColor: req.body.favoriteColor,
+            email: req.body.email,
+            birthday: req.body.birthday,
+        }
+
+        await database.getDatabase().db().collection("users").insertOne(newDoc).catch((err) =>{
+            throw Error("an error occur when trying to Post", err);
+        }).then((data) => {
+            res.send(data);
+        })
+}
+
+const updateUser = async (req, res) =>{
+    try{ 
+        const userId = new ObjectId(req.params.id);
+        const newDoc = {}
+            if (req.body.fname !== undefined) newDoc.fname = req.body.fname;
+            if (req.body.lname !== undefined) newDoc.lname = req.body.lname;
+            if (req.body.mname !== undefined) newDoc.mname = req.body.mname;
+            if (req.body.favoriteColor !== undefined) newDoc.favoriteColor = req.body.favoriteColor;
+            if (req.body.email !== undefined) newDoc.email = req.body.email;
+            if (req.body.birthday !== undefined) newDoc.birthday = req.body.birthday;
+        
+        // const oldDoc = await database.getDatabase().db().collection("users").findOne({});
+        await database.getDatabase().db().collection("users").updateOne({_id: userId}, {$set: newDoc})
+        .then((data) => {
+            res.send(data);
+        });
+    }catch(err){
+        console.log("Update failed", err);
+    }
+}
+
+const deleteUser = async (req, res) =>{
+    try{
+        const userId = new ObjectId(req.params.id);
+        await database.getDatabase().db().collection("users").deleteOne({_id: userId})
+        .then((data) => {
+            res.send(data);
+        });
+    }catch(err){
+        throw Error("Delete failed", err)
+    }
 }
 
 module.exports = {
     getAll,
-    getSingle
+    getSingle,
+    createUser,
+    updateUser,
+    deleteUser
 }

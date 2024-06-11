@@ -7,7 +7,7 @@ var options = {
         "version": "1.0.0",
         "title": "Documentation to an API"
     },
-    host: "localhost:8080",
+    host: "https://web-services-apis.onrender.com",
     scheme: ["http"],
     }
 const swaggerDocument = "./models/swagger.json";

@@ -11,8 +11,9 @@ GET http://localhost:8080/users/666385f84e95e0c336a58d40
 ###
 
 # Create Contacts
-POST http://localhost:8080/users/
-Content-Type: : application/json
+POST http://localhost:8080/users HTTP/1.1
+Content-Type: application/json
+
 {
     "fname": "jay",
     "lname": "lors",
@@ -25,15 +26,16 @@ Content-Type: : application/json
 ###
 
 # Put Contanct
-PUT http://localhost:8080/users/id-to-modify/666385f84e95e0c336a58d40
-Content-Type: : application/json
+PUT http://localhost:8080/users/id-to-modify/666385f84e95e0c336a58d40 HTTP/1.1
+Content-Type: application/json
+
 {
     "favoriteColor": "Blue"
 }
 
 ###
 # DeleteContact
-DELETE http://localhost:8080/users/id-to-modify/66668ba0e83fc530950d5798d
+DELETE http://localhost:8080/users/id-to-modify/66668ba0e83fc530950d5798d HTTP/1.1
 
 # Production
 
@@ -49,8 +51,9 @@ GET https://web-services-apis.onrender.com/users/666385f84e95e0c336a58d40
 ###
 
 # Create Contacts
-POST https://web-services-apis.onrender.com/users/
-Content-Type: : application/json
+POST https://web-services-apis.onrender.com/users  HTTP/1.1
+content-type: application/json
+
 {
     "fname": "jay",
     "lname": "lors",
@@ -63,12 +66,13 @@ Content-Type: : application/json
 ###
 
 # Put Contanct
-PUT https://web-services-apis.onrender.com/users/id-to-modify/666385f84e95e0c336a58d40
-Content-Type: : application/json
+PUT https://web-services-apis.onrender.com/users/id-to-modify/666385f84e95e0c336a58d40 HTTP/1.1
+Content-Type: application/json
+
 {
     "favoriteColor": "Blue"
 }
 
 ###
 # DeleteContact
-DELETE https://web-services-apis.onrender.com/users/id-to-modify/66668ba0e83fc530950d5798d
+DELETE https://web-services-apis.onrender.com/users/id-to-modify/66668ba0e83fc530950d5798d HTTP/1.1

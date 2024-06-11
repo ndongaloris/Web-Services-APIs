@@ -4,7 +4,7 @@ const ObjectId = require("mongodb").ObjectId;
 const getAll = async (req, res)=>{
     const result = await database.getDatabase().db().collection("users").find();
     result.toArray().then((users) =>{
-        res.setHeader("COntent-Type", "application/json");
+        res.setHeader("Content-Type", "application/json");
         res.status(200).json(users)
     }).catch((err) => {
         console.log("error with getAll function in the user controller", err);

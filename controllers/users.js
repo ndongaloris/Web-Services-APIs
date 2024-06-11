@@ -24,9 +24,9 @@ const getSingle = async (req, res)=>{
 
 const createUser = async(req, res) =>{
         const newDoc = {
-            fname: req.body.fname,
-            lname: req.body.lname,
-            mname: req.body.mname,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            middleName: req.body.middleName,
             favoriteColor: req.body.favoriteColor,
             email: req.body.email,
             birthday: req.body.birthday,
@@ -43,9 +43,9 @@ const updateUser = async (req, res) =>{
     try{ 
         const userId = new ObjectId(req.params.id);
         const newDoc = {}
-            if (req.body.fname !== undefined) newDoc.fname = req.body.fname;
-            if (req.body.lname !== undefined) newDoc.lname = req.body.lname;
-            if (req.body.mname !== undefined) newDoc.mname = req.body.mname;
+            if (req.body.firstName !== undefined) newDoc.firstName = req.body.firstName;
+            if (req.body.lastName !== undefined) newDoc.lastName= req.body.lastName;
+            if (req.body.middleName !== undefined) newDoc.middleName = req.body.middleName;
             if (req.body.favoriteColor !== undefined) newDoc.favoriteColor = req.body.favoriteColor;
             if (req.body.email !== undefined) newDoc.email = req.body.email;
             if (req.body.birthday !== undefined) newDoc.birthday = req.body.birthday;

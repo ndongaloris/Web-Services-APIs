@@ -52,13 +52,13 @@
             "schema": {
               "type": "object",
               "properties": {
-                "fname": {
+                "firstName": {
                   "example": "any"
                 },
-                "lname": {
+                "lastName": {
                   "example": "any"
                 },
-                "mname": {
+                "middleName": {
                   "example": "any"
                 },
                 "favoriteColor": {
@@ -134,13 +134,13 @@
             "schema": {
               "type": "object",
               "properties": {
-                "fname": {
+                "firstName": {
                   "example": "any"
                 },
-                "lname": {
+                "lastName": {
                   "example": "any"
                 },
-                "mname": {
+                "middleName": {
                   "example": "any"
                 },
                 "favoriteColor": {

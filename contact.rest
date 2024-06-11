@@ -15,9 +15,9 @@ POST http://localhost:8080/users HTTP/1.1
 Content-Type: application/json
 
 {
-    "fname": "jay",
-    "lname": "lors",
-    "mname": "nono",
+    "firstName": "jay",
+    "lastName": "lors",
+    "middleName": "nono",
     "favoriteColor": "gray",
     "email": "example@gmail.com",
     "birthday": "02/07/2045"
@@ -55,9 +55,9 @@ POST https://web-services-apis.onrender.com/users  HTTP/1.1
 content-type: application/json
 
 {
-    "fname": "jay",
-    "lname": "lors",
-    "mname": "nono",
+    "firstName": "jay",
+    "lastName": "lors",
+    "middleName": "nono",
     "favoriteColor": "gray",
     "email": "example@gmail.com",
     "birthday": "02/07/2045"
@@ -68,7 +68,6 @@ content-type: application/json
 # Put Contanct
 PUT https://web-services-apis.onrender.com/users/id-to-modify/666385f84e95e0c336a58d40 HTTP/1.1
 Content-Type: application/json
-
 {
     "favoriteColor": "Blue"
 }

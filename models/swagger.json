@@ -8,7 +8,7 @@
   "host": "web-services-apis.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/": {
@@ -249,8 +249,5 @@
         }
       }
     }
-  },
-  "scheme": [
-    "https"
-  ]
+  }
 }

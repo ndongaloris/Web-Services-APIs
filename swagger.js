@@ -8,7 +8,7 @@ var options = {
         "title": "Documentation to an API"
     },
     host: "web-services-apis.onrender.com",
-    scheme: ["https"],
+    schemes: ["https"],
     }
 const swaggerDocument = "./models/swagger.json";
 const route = ["./routes/index.js"]; 

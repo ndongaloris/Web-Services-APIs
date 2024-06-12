@@ -1,9 +1,17 @@
-const database = require("../db/db");
-const ObjectId = require("mongodb").ObjectId;
+const ObjectId = require("mongodb").ObjectId; 
+const database = require("../models");
+const User = database.users;
+const user = {};
 
-const getAll = async (req, res)=>{
-    const result = await database.getDatabase().db().collection("users").find();
-    result.toArray().then((users) =>{
+user.getAll = async (req, res)=>{
+    User.find({},{
+            lastName: 1,
+            middleName: 1,
+            favoriteColor: 1,
+            email: 1,
+            birthday: 1,
+})
+.then((users) =>{
         res.setHeader("Content-Type", "application/json");
         res.status(200).json(users)
     }).catch((err) => {
@@ -11,7 +19,7 @@ const getAll = async (req, res)=>{
     })
 }
 
-const getSingle = async (req, res)=>{
+user.getSingle = async (req, res)=>{
     const userId = new ObjectId(req.params.id);
     const result = await database.getDatabase().db().collection("users").find({_id: userId});
     result.toArray().then((users) =>{
@@ -22,7 +30,7 @@ const getSingle = async (req, res)=>{
     })
 }
 
-const createUser = async(req, res) =>{
+user.createUser = async(req, res) =>{
         const newDoc = {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
@@ -39,7 +47,7 @@ const createUser = async(req, res) =>{
         })
 }
 
-const updateUser = async (req, res) =>{
+user.updateUser = async (req, res) =>{
     try{ 
         const userId = new ObjectId(req.params.id);
         const newDoc = {}
@@ -60,7 +68,7 @@ const updateUser = async (req, res) =>{
     }
 }
 
-const deleteUser = async (req, res) =>{
+user.deleteUser = async (req, res) =>{
     try{
         const userId = new ObjectId(req.params.id);
         await database.getDatabase().db().collection("users").deleteOne({_id: userId})
@@ -72,10 +80,4 @@ const deleteUser = async (req, res) =>{
     }
 }
 
-module.exports = {
-    getAll,
-    getSingle,
-    createUser,
-    updateUser,
-    deleteUser
-}
+module.exports = user;

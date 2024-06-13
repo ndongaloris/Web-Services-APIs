@@ -3,24 +3,12 @@ const mongoose = require("mongoose");
 const {Schema, model} = mongoose;
 
 const userSchema = new Schema({
-    firstName: {
-        firstName: String,
-        require: true},
-    lastName: {
-        lastName: String,
-        require: true},
-    middleName: {
-        middleName: String,
-        require: true},
-    favoriteColor: {
-        favoriteColor: String,
-        require: true},
-    email: {
-        email: String,
-        require: true},
-    birthday: {
-        birthday: String,
-        require: true},
+    firstName: String,
+    lastName: String,
+    middleName: String,
+    favoriteColor: String,
+    email: String,
+    birthday: String,
 })
 
 const userModel = model("Users", userSchema)

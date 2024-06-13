@@ -1,17 +1,9 @@
 const ObjectId = require("mongodb").ObjectId; 
 const database = require("../models");
 const User = database.users;
-const user = {};
 
-user.getAll = async (req, res)=>{
-    User.find({},{
-            lastName: 1,
-            middleName: 1,
-            favoriteColor: 1,
-            email: 1,
-            birthday: 1,
-})
-.then((users) =>{
+exports.getAll = async (req, res)=>{
+    User.find().then((users) =>{
         res.setHeader("Content-Type", "application/json");
         res.status(200).json(users)
     }).catch((err) => {
@@ -19,7 +11,7 @@ user.getAll = async (req, res)=>{
     })
 }
 
-user.getSingle = async (req, res)=>{
+exports.getSingle = async (req, res)=>{
     const userId = new ObjectId(req.params.id);
     const result = await database.getDatabase().db().collection("users").find({_id: userId});
     result.toArray().then((users) =>{
@@ -30,7 +22,7 @@ user.getSingle = async (req, res)=>{
     })
 }
 
-user.createUser = async(req, res) =>{
+exports.createUser = async(req, res) =>{
         const newDoc = {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
@@ -47,7 +39,7 @@ user.createUser = async(req, res) =>{
         })
 }
 
-user.updateUser = async (req, res) =>{
+exports.updateUser = async (req, res) =>{
     try{ 
         const userId = new ObjectId(req.params.id);
         const newDoc = {}
@@ -68,7 +60,7 @@ user.updateUser = async (req, res) =>{
     }
 }
 
-user.deleteUser = async (req, res) =>{
+exports.deleteUser = async (req, res) =>{
     try{
         const userId = new ObjectId(req.params.id);
         await database.getDatabase().db().collection("users").deleteOne({_id: userId})
@@ -79,5 +71,3 @@ user.deleteUser = async (req, res) =>{
         throw Error("Delete failed", err)
     }
 }
-
-module.exports = user;

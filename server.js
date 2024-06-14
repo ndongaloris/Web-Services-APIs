@@ -26,6 +26,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const port = process.env.PORT;
 const host = process.env.HOST;
 
+process.on('uncaughtException', (err, origin) => {
+    console.log(process.stderr.fd, `Caught exception: ${err}\n` + `Exception origin: ${origin}`);
+});
 
 const db = require('./models');
 db.mongoose

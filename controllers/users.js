@@ -2,7 +2,7 @@ const ObjectId = require("mongodb").ObjectId;
 const database = require("../models");
 const User = database.users;
 
-exports.getAll = async (req, res)=>{
+exports.getAll = (req, res)=>{
     User.find().then((users) =>{
         res.setHeader("Content-Type", "application/json");
         res.status(200).json(users)
@@ -11,7 +11,10 @@ exports.getAll = async (req, res)=>{
     })
 }
 
-exports.getSingle = async (req, res)=>{
+exports.getSingle = (req, res)=>{
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json('Must use a valid contact id to find a contact.');
+        }
     const userId = new ObjectId(req.params.id);
     User.find({_id: userId}).then((users) =>{
         res.setHeader("Content-Type", "application/json");
@@ -21,7 +24,7 @@ exports.getSingle = async (req, res)=>{
     })
 }
 
-exports.createUser = async(req, res) =>{
+exports.createUser =(req, res) =>{
         const newDoc = new User({
             firstName: req.body.firstName,
             lastName: req.body.lastName,
@@ -38,7 +41,10 @@ exports.createUser = async(req, res) =>{
         })
 }
 
-exports.updateUser = async (req, res) =>{
+exports.updateUser = (req, res) =>{
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json('Must use a valid contact id to find a contact.');
+    }
     const userId = new ObjectId(req.params.id);
     const newDoc = {}
         if (req.body.firstName !== undefined) newDoc.firstName = req.body.firstName;
@@ -48,7 +54,7 @@ exports.updateUser = async (req, res) =>{
         if (req.body.email !== undefined) newDoc.email = req.body.email;
         if (req.body.birthday !== undefined) newDoc.birthday = req.body.birthday;
     
-    // const oldDoc = await database.getDatabase().db().collection("users").findOne({});
+    // const oldDoc = database.getDatabase().db().collection("users").findOne({});
     User.updateOne({_id: userId}, {$set: newDoc})
     .then((data) => {
         res.send(data);
@@ -57,10 +63,14 @@ exports.updateUser = async (req, res) =>{
     })
 }
 
-exports.deleteUser = async (req, res) =>{
+exports.deleteUser = (req, res) =>{
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json('Must use a valid contact id to find a contact.');
+    }
     const userId = new ObjectId(req.params.id);
-    await User.deleteOne({_id: userId})
+    User.deleteOne({_id: userId})
     .then((data) => {
+        res.setHeader("Content-Type", "application/json");
         res.send(data);
     }).catch((err) =>{
         throw Error("Delete failed", err);

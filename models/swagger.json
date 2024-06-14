@@ -6,6 +6,7 @@
     "title": "Documentation to an API"
   },
   "host": "web-services-apis.onrender.com",
+  "host": "web-services-apis.onrender.com",
   "basePath": "/",
   "schemes": [
     "https",
@@ -78,6 +79,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "412": {
+            "description": "Precondition Failed"
           }
         }
       }
@@ -99,11 +103,17 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       },
       "delete": {
         "description": "",
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -115,6 +125,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       }
@@ -160,6 +173,12 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "412": {
+            "description": "Precondition Failed"
           }
         }
       }
@@ -250,5 +269,6 @@
         }
       }
     }
+  }
   }
 }

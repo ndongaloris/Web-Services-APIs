@@ -15,7 +15,7 @@ POST http://localhost:8080/users HTTP/1.1
 Content-Type: application/json
 
 {
-    "firstName": "jay",
+    "firstName": "jays",
     "lastName": "lors",
     "middleName": "nono",
     "favoriteColor": "gray",
@@ -30,12 +30,12 @@ PUT http://localhost:8080/users/id-to-modify/666385f84e95e0c336a58d40 HTTP/1.1
 Content-Type: application/json
 
 {
-    "favoriteColor": "Blue"
+    "favoriteColor": "Yellow"
 }
 
 ###
 # DeleteContact
-DELETE http://localhost:8080/users/id-to-modify/66668ba0e83fc530950d5798d HTTP/1.1
+DELETE http://localhost:8080/users/666b4505fa27ec851461010d HTTP/1.1
 
 # Production
 
@@ -45,7 +45,7 @@ GET https://web-services-apis.onrender.com/users
 
 ###
 # GET BY ID
-GET https://web-services-apis.onrender.com/users/666385f84e95e0c336a58d40
+GET https://web-services-apis.onrender.com/users/6668cbd6e5ba49ec9d0ca93d
 
 
 ###

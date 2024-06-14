@@ -6,6 +6,7 @@
     "title": "Documentation to an API"
   },
   "host": "web-services-apis.onrender.com",
+  "host": "web-services-apis.onrender.com",
   "basePath": "/",
   "schemes": [
     "https",
@@ -268,5 +269,6 @@
         }
       }
     }
+  }
   }
 }
